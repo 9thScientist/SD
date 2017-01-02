@@ -85,6 +85,9 @@ public class Skeleton extends Thread {
 		String[] parameters = arguments.split(" ");
 
 		try {
+			if (parameters.length > 2)
+				throw new RequestFailedException("O username/password não podem ter espaços");
+
 			aucHouse.signUp(parameters[0], parameters[1]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			throw new RequestFailedException("Os argumentos dados não são válidos");
